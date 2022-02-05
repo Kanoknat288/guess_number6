@@ -1,28 +1,26 @@
 import 'dart:math';
+
 class Game {
-  //camel case
-  int?  maxRandom;
+  static const defaultMaxRandom = 100;
   int? _answer;
   int _guessCount = 0;
-  static List<int> myList = [];
+  static final List<int> guessCountList = [];
 
-  Game({int maxRandom = 100}) {
-    this.maxRandom = maxRandom;
+  Game({int maxRandom = defaultMaxRandom}) {
     var r = Random();
     _answer = r.nextInt(maxRandom) + 1;
+    print('The answer is $_answer');
   }
 
   int get guessCount {
     return _guessCount;
   }
+
   void addCountList() {
-    myList.add(_guessCount);
+    guessCountList.add(_guessCount);
   }
 
   int doGuess(int num) {
-    // ทายถูก return 0
-    // ทายมากไป return 1
-    // ทายน้อยไป return -1
     _guessCount++;
     if (num > _answer!) {
       return 1;
